@@ -1,0 +1,14 @@
+provider: "openai_compatible"
+base_url: "${LEL_OPENAI_BASE_URL}"
+api_key: "${LEL_OPENAI_API_KEY}"
+model_name: "deepseek-v4-pro"
+benchmark_path: "../examples/benchmark.example.jsonl"
+output_dir: "../outputs"
+concurrency: 2
+timeout_seconds: 360
+max_retries: 2
+retry_backoff_seconds: 1
+resume: true
+max_tokens:
+temperature:
+request_options:

@@ -1,0 +1,75 @@
+{
+  "name": "gemini",
+  "displayName": "Gemini",
+  "loginUrl": "https://gemini.google.com/app",
+  "loginTimeoutMs": 60000,
+  "delayBetweenSamplesMs": 30000,
+  "delayJitterMs": 15000,
+  "actionTimeoutMs": 20000,
+  "inputTimeoutMs": 30000,
+  "answerStartTimeoutMs": 60000,
+  "newChat": {
+    "actions": [
+      { "type": "goto", "url": "https://gemini.google.com/app", "waitUntil": "domcontentloaded" },
+      {
+        "type": "clickAny",
+        "optional": true,
+        "selectors": [
+          "button[aria-label*='New chat']",
+          "button:has-text('New chat')",
+          "a:has-text('New chat')"
+        ]
+      }
+    ]
+  },
+  "inputSelector": [
+    "rich-textarea div[contenteditable='true']",
+    "div.ql-editor[contenteditable='true']",
+    "div[contenteditable='true']",
+    "[role='textbox']"
+  ],
+  "sendButtonSelector": [
+    "button[aria-label*='Send']",
+    "button:has-text('Send')"
+  ],
+  "assistantMessageSelector": [
+    "message-content",
+    ".model-response-text",
+    "[class*='model-response']",
+    ".markdown"
+  ],
+  "streamingDone": {
+    "timeoutMs": 360000,
+    "stableMs": 8000,
+    "minWaitAfterStartMs": 15000,
+    "maxStopButtonWaitAfterValidMs": 30000,
+    "allowTextStableWithActionButtons": true,
+    "answerActionSelectors": [
+      "button[aria-label*='Copy' i]",
+      "button[aria-label*='Good response' i]",
+      "button[aria-label*='Bad response' i]",
+      "button[aria-label*='Like' i]",
+      "button[aria-label*='Dislike' i]",
+      "button[aria-label*='Regenerate' i]",
+      "button[aria-label*='Share' i]",
+      "button[data-test-id*='copy' i]",
+      "[role='button'][aria-label*='Copy' i]",
+      "message-actions button"
+    ],
+    "progressLogMs": 15000,
+    "pollMs": 1000,
+    "stopButtonSelectors": [
+      "button[aria-label*='Stop']",
+      "button:has-text('Stop')"
+    ]
+  },
+  "captchaOrRiskSelectors": [
+    "iframe[src*='captcha']",
+    "text=/captcha|verify it is you|verify you are human|unusual activity/i"
+  ],
+  "loginExpiredSelectors": [
+    "text=/sign in|log in|session expired/i",
+    "a:has-text('Sign in')",
+    "button:has-text('Sign in')"
+  ]
+}

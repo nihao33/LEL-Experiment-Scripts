@@ -1,0 +1,14 @@
+provider: "openai_compatible"
+base_url: "${LEL_OPENAI_BASE_URL}"
+api_key: "${LEL_OPENAI_API_KEY}"
+model_name: "gpt-5.6-sol"
+benchmark_path: "../examples/benchmark.example.jsonl"
+output_dir: "../outputs"
+concurrency: 2
+timeout_seconds: 120
+max_retries: 2
+retry_backoff_seconds: 1
+resume: true
+max_tokens:
+temperature:
+request_options:

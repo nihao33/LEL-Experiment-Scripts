@@ -1,0 +1,169 @@
+{
+  "name": "deepseek",
+  "displayName": "DeepSeek",
+  "defaultRunName": "deepseek-fast",
+  "loginUrl": "https://chat.deepseek.com/",
+  "viewport": { "width": 1920, "height": 1000 },
+  "windowSize": { "width": 1920, "height": 1080 },
+  "startMaximized": true,
+  "loginTimeoutMs": 60000,
+  "delayBetweenSamplesMs": 60000,
+  "delayJitterMs": 30000,
+  "actionTimeoutMs": 20000,
+  "inputTimeoutMs": 30000,
+  "answerStartTimeoutMs": 120000,
+  "newChat": {
+    "actions": [
+      { "type": "goto", "url": "https://chat.deepseek.com/", "waitUntil": "domcontentloaded" },
+      {
+        "type": "clickAny",
+        "optional": true,
+        "selectors": [
+          "text=/New chat|\u65b0\u5bf9\u8bdd|\u65b0\u5efa/i",
+          "button[aria-label*='New' i]",
+          "[role='button'][aria-label*='New' i]",
+          "button[aria-label*='\u65b0']",
+          "[role='button'][aria-label*='\u65b0']"
+        ]
+      }
+    ]
+  },
+  "prepareChat": {
+    "actions": [
+      {
+        "type": "clickAny",
+        "optional": true,
+        "label": "fast mode",
+        "selectors": [
+          "text=/^\u5feb\u901f\u6a21\u5f0f$/",
+          "button:has-text('\u5feb\u901f\u6a21\u5f0f')",
+          "[role='button']:has-text('\u5feb\u901f\u6a21\u5f0f')"
+        ],
+        "timeoutMs": 3000
+      },
+      {
+        "type": "ensureToggleOn",
+        "optional": true,
+        "label": "deep thinking",
+        "selectors": [
+          "text=/^\u6df1\u5ea6\u601d\u8003$/",
+          "button:has-text('\u6df1\u5ea6\u601d\u8003')",
+          "button:has-text('DeepThink')",
+          "button:has-text('Deep Thinking')",
+          "[role='button']:has-text('\u6df1\u5ea6\u601d\u8003')",
+          "[role='button']:has-text('DeepThink')"
+        ],
+        "activeSelectors": [
+          "button[aria-pressed='true']:has-text('\u6df1\u5ea6\u601d\u8003')",
+          "button[aria-checked='true']:has-text('\u6df1\u5ea6\u601d\u8003')",
+          "button[class*='active']:has-text('\u6df1\u5ea6\u601d\u8003')",
+          "button[class*='selected']:has-text('\u6df1\u5ea6\u601d\u8003')",
+          "div[class*='active']:has-text('\u6df1\u5ea6\u601d\u8003')",
+          "div[class*='selected']:has-text('\u6df1\u5ea6\u601d\u8003')",
+          "[role='button'][aria-pressed='true']:has-text('\u6df1\u5ea6\u601d\u8003')",
+          "[role='button'][class*='active']:has-text('DeepThink')"
+        ],
+        "clickWhenUnknown": true,
+        "afterClickDelayMs": 300
+      },
+      {
+        "type": "ensureToggleOn",
+        "optional": true,
+        "label": "smart search",
+        "selectors": [
+          "text=/^\u667a\u80fd\u641c\u7d22$/",
+          "text=/^\u8054\u7f51\u641c\u7d22$/",
+          "button:has-text('\u667a\u80fd\u641c\u7d22')",
+          "button:has-text('\u8054\u7f51\u641c\u7d22')",
+          "button:has-text('Search')",
+          "[role='button']:has-text('\u667a\u80fd\u641c\u7d22')",
+          "[role='button']:has-text('\u8054\u7f51\u641c\u7d22')"
+        ],
+        "activeSelectors": [
+          "button[aria-pressed='true']:has-text('\u667a\u80fd\u641c\u7d22')",
+          "button[aria-pressed='true']:has-text('\u8054\u7f51\u641c\u7d22')",
+          "button[class*='active']:has-text('\u667a\u80fd\u641c\u7d22')",
+          "button[class*='active']:has-text('\u8054\u7f51\u641c\u7d22')",
+          "button[class*='selected']:has-text('\u667a\u80fd\u641c\u7d22')",
+          "button[class*='selected']:has-text('\u8054\u7f51\u641c\u7d22')",
+          "div[class*='active']:has-text('\u667a\u80fd\u641c\u7d22')",
+          "div[class*='active']:has-text('\u8054\u7f51\u641c\u7d22')",
+          "div[class*='selected']:has-text('\u667a\u80fd\u641c\u7d22')",
+          "div[class*='selected']:has-text('\u8054\u7f51\u641c\u7d22')",
+          "[role='button'][class*='active']:has-text('Search')"
+        ],
+        "clickWhenUnknown": true,
+        "afterClickDelayMs": 300
+      }
+    ]
+  },
+  "inputSelector": [
+    "textarea",
+    "div[contenteditable='true']",
+    "[role='textbox']"
+  ],
+  "sendButtonSelector": [
+    "button[type='submit']",
+    "button[aria-label*='Send' i]",
+    "button[aria-label*='\u53d1\u9001']",
+    "[role='button'][aria-label*='Send' i]",
+    "[role='button'][aria-label*='\u53d1\u9001']"
+  ],
+  "sendButtonTimeoutMs": 3000,
+  "sendKeyFallback": "Enter",
+  "sendConfirmation": {
+    "maxAttempts": 3,
+    "timeoutMs": 10000,
+    "pollMs": 250,
+    "log": true
+  },
+  "minAnswerChars": 120,
+  "assistantMessageSelector": [
+    "[data-role='assistant']",
+    "[data-message-author-role='assistant']",
+    "[class*='assistant']",
+    "[class*='markdown']",
+    ".markdown"
+  ],
+  "streamingDone": {
+    "timeoutMs": 360000,
+    "stableMs": 15000,
+    "minWaitAfterStartMs": 30000,
+    "maxStopButtonWaitAfterValidMs": 60000,
+    "allowTextStableWithActionButtons": true,
+    "answerActionSelectors": [
+      "button[aria-label*='Copy' i]",
+      "button[aria-label*='\u590d\u5236']",
+      "button[aria-label*='Like' i]",
+      "button[aria-label*='Dislike' i]",
+      "button[aria-label*='\u70b9\u8d5e']",
+      "button[aria-label*='\u70b9\u8e29']",
+      "button[aria-label*='Regenerate' i]",
+      "button[aria-label*='\u91cd\u65b0\u751f\u6210']",
+      "button[aria-label*='Share' i]",
+      "button[aria-label*='\u5206\u4eab']",
+      "[role='button'][aria-label*='Copy' i]",
+      "[role='button'][aria-label*='\u590d\u5236']"
+    ],
+    "progressLogMs": 15000,
+    "pollMs": 1000,
+    "stopButtonSelectors": [
+      "button[aria-label*='Stop' i]",
+      "button[aria-label*='\u505c\u6b62']",
+      "button[aria-label*='\u6682\u505c']"
+    ],
+    "activitySelectors": [
+      "text=/\u6b63\u5728\u601d\u8003|\u601d\u8003\u4e2d|\u6b63\u5728\u641c\u7d22|\u6b63\u5728\u68c0\u7d22|\u641c\u7d22\u5230\\s*\\d+\\s*\u4e2a\u7f51\u9875|\u6d4f\u89c8\\s*\\d+\\s*\u4e2a\u9875\u9762|\u6b63\u5728\u83b7\u53d6|\u6b63\u5728\u8bfb\u53d6/i"
+    ]
+  },
+  "captchaOrRiskSelectors": [
+    "iframe[src*='captcha']",
+    "input[name='cf-turnstile-response']",
+    "text=/captcha|\u9a8c\u8bc1\u7801|\u5b89\u5168\u9a8c\u8bc1|\u4eba\u673a\u9a8c\u8bc1|rate limit/i"
+  ],
+  "loginExpiredSelectors": [
+    "button:has-text('Log in')",
+    "button:has-text('\u767b\u5f55')",
+    "text=/please log in|\u8bf7\u767b\u5f55|session expired/i"
+  ]
+}

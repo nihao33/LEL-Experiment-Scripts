@@ -1,0 +1,25 @@
+{
+  "name": "lel-web-experiment",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Playwright-based collector for the LLM Expired Links web AI experiment.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "login": "node src/cli.js login",
+    "experiment": "node src/cli.js phase1",
+    "phase1": "node src/cli.js phase1",
+    "platforms": "node src/cli.js platforms",
+    "summarize": "node src/summarize.js",
+    "summarize:all": "node src/summarize.js --all",
+    "test": "node --test test/config.test.js test/dataset.test.js test/domain.test.js test/results.test.js test/runner.test.js",
+    "test:browser": "node --test test/evidence.test.js test/mock-page.test.js"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "playwright": "^1.44.1",
+    "tldts": "^6.1.86"
+  }
+}

@@ -1,0 +1,14 @@
+provider: "gemini_compatible"
+base_url: "${LEL_GEMINI_BASE_URL}"
+api_key: "${LEL_GEMINI_API_KEY}"
+model_name: "gemini-3.1-pro-preview"
+benchmark_path: "../examples/benchmark.example.jsonl"
+output_dir: "../outputs"
+concurrency: 1
+timeout_seconds: 300
+max_retries: 1
+retry_backoff_seconds: 3
+resume: true
+max_tokens:
+temperature:
+request_options:

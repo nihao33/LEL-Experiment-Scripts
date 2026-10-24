@@ -1,0 +1,120 @@
+{
+  "name": "doubao",
+  "displayName": "\u8c46\u5305",
+  "loginUrl": "https://www.doubao.com/chat/",
+  "loginTimeoutMs": 60000,
+  "delayBetweenSamplesMs": 25000,
+  "delayJitterMs": 15000,
+  "viewport": { "width": 1920, "height": 950 },
+  "windowSize": { "width": 1920, "height": 1030 },
+  "useWindowViewport": true,
+  "startMaximized": true,
+  "actionTimeoutMs": 20000,
+  "inputTimeoutMs": 30000,
+  "answerStartTimeoutMs": 120000,
+  "newChat": {
+    "actions": [
+      { "type": "goto", "url": "https://www.doubao.com/chat/", "waitUntil": "domcontentloaded" },
+      {
+        "type": "clickAny",
+        "optional": true,
+        "selectors": [
+          "text=/\u65b0\u5bf9\u8bdd|\u65b0\u5efa|New chat|New conversation/i",
+          "button[aria-label*='\u65b0']",
+          "[role='button'][aria-label*='\u65b0']",
+          "a[aria-label*='\u65b0']"
+        ]
+      }
+    ]
+  },
+  "inputSelector": [
+    "textarea",
+    "div[contenteditable='true']",
+    "[role='textbox']"
+  ],
+  "sendButtonSelector": [
+    "button[type='submit']",
+    "button[aria-label*='\u53d1\u9001']",
+    "[role='button'][aria-label*='\u53d1\u9001']",
+    "button[title*='\u53d1\u9001']",
+    "text=/^\u53d1\u9001$/"
+  ],
+  "sendButtonTimeoutMs": 3000,
+  "sendKeyFallback": "Enter",
+  "sendConfirmation": {
+    "maxAttempts": 3,
+    "timeoutMs": 10000,
+    "pollMs": 250,
+    "log": true
+  },
+  "sameConversationRetry": {
+    "matchText": "很抱歉，出于隐私信息保护的考虑，我暂时无法提供相应信息",
+    "maxRetries": 5,
+    "retryDelayMs": 1000
+  },
+  "minAnswerChars": 120,
+  "assistantMessageSelector": [
+    "[data-message-id] [class*='md-box-root']",
+    "[data-message-id] [data-streaming]",
+    "[data-message-id] [data-render-engine='node'] [class*='container']",
+    "[data-message-id] [class*='text-content']",
+    "[data-message-id] [class*='link']",
+    "[data-role='assistant']",
+    "[data-message-author-role='assistant']",
+    "[class*='assistant']",
+    "[class*='markdown']",
+    ".markdown"
+  ],
+  "streamingDone": {
+    "timeoutMs": 360000,
+    "stableMs": 15000,
+    "minWaitAfterStartMs": 30000,
+    "maxStopButtonWaitAfterValidMs": 60000,
+    "allowTextStableWithActionButtons": true,
+    "answerActionSelectors": [
+      "button[aria-label*='Copy' i]",
+      "button[aria-label*='\u590d\u5236']",
+      "button[title*='Copy' i]",
+      "button[title*='\u590d\u5236']",
+      "button[aria-label*='Like' i]",
+      "button[aria-label*='Dislike' i]",
+      "button[aria-label*='\u70b9\u8d5e']",
+      "button[aria-label*='\u70b9\u8e29']",
+      "button[aria-label*='Regenerate' i]",
+      "button[aria-label*='\u91cd\u65b0\u751f\u6210']",
+      "button[aria-label*='Share' i]",
+      "button[aria-label*='\u5206\u4eab']",
+      "[role='button'][aria-label*='Copy' i]",
+      "[role='button'][aria-label*='\u590d\u5236']"
+    ],
+    "progressLogMs": 15000,
+    "pollMs": 1000,
+    "stopButtonSelectors": [
+      "[class*='break-btn']",
+      "[id*='end-msg']",
+      "button[aria-label*='\u505c\u6b62']",
+      "button[aria-label*='\u6682\u505c']",
+      "text=/\u505c\u6b62|\u6682\u505c|Stop/i"
+    ],
+    "activitySelectors": [
+      "[class*='loading-container']",
+      "[class*='flowing-light']",
+      "[class*='dot-flashing']",
+      "text=/\u627e\u5230\\s*\\d+\\s*\u7bc7\u8d44\u6599|\u6b63\u5728\u67e5\u627e|\u6b63\u5728\u641c\u7d22|\u6b63\u5728\u6574\u7406|\u6b63\u5728\u751f\u6210/i"
+    ]
+  },
+  "stateSelectors": {
+    "serviceIssueSelectors": [
+      "text=/\u7cfb\u7edf\u9519\u8bef|\u7cfb\u7edf\u5f02\u5e38|\u7cfb\u7edf\u7e41\u5fd9|\u670d\u52a1\u5f02\u5e38|\u670d\u52a1\u7e41\u5fd9|\u8bf7\u6c42\u5f02\u5e38|\u8bf7\u6c42\u7e41\u5fd9|\u751f\u6210\u5931\u8d25|\u51fa\u9519\u4e86|\u53d1\u751f\u9519\u8bef|\u8bf7\u7a0d\u540e\u518d\u8bd5|\u8bf7\u91cd\u8bd5|server error|system error|something went wrong|request failed/i"
+    ]
+  },
+  "captchaOrRiskSelectors": [
+    "iframe[src*='captcha']",
+    "input[name='cf-turnstile-response']",
+    "text=/captcha|\u9a8c\u8bc1\u7801|\u5b89\u5168\u9a8c\u8bc1|\u4eba\u673a\u9a8c\u8bc1/i"
+  ],
+  "loginExpiredSelectors": [
+    "button:has-text('\u767b\u5f55')",
+    "text=/\u8bf7\u767b\u5f55|\u767b\u5f55\u540e\u7ee7\u7eed|\u767b\u5f55\u5931\u6548|session expired|log in/i"
+  ]
+}

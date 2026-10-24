@@ -1,0 +1,15 @@
+provider: "anthropic_compatible"
+base_url: "${LEL_ANTHROPIC_BASE_URL}"
+api_key: "${LEL_ANTHROPIC_API_KEY}"
+model_name: "claude-sonnet-4-6"
+anthropic_version: "2023-06-01"
+benchmark_path: "../examples/benchmark.example.jsonl"
+output_dir: "../outputs"
+concurrency: 2
+timeout_seconds: 120
+max_retries: 2
+retry_backoff_seconds: 1
+resume: true
+max_tokens:
+temperature:
+request_options:

@@ -1,0 +1,87 @@
+{
+  "name": "chatgpt",
+  "displayName": "ChatGPT",
+  "loginUrl": "https://chatgpt.com/auth/login",
+  "loginTimeoutMs": 120000,
+  "delayBetweenSamplesMs": 30000,
+  "delayJitterMs": 15000,
+  "actionTimeoutMs": 20000,
+  "inputTimeoutMs": 30000,
+  "answerStartTimeoutMs": 60000,
+  "newChat": {
+    "actions": [
+      { "type": "goto", "url": "https://chatgpt.com/", "waitUntil": "domcontentloaded" },
+      {
+        "type": "clickAny",
+        "optional": true,
+        "selectors": [
+          "a[aria-label*='New chat']",
+          "a[href='/']",
+          "button[aria-label*='New chat']",
+          "button:has-text('New chat')"
+        ]
+      }
+    ]
+  },
+  "inputSelector": [
+    "#prompt-textarea",
+    "textarea[data-testid='prompt-textarea']",
+    "div[contenteditable='true'][id='prompt-textarea']",
+    "div[contenteditable='true']"
+  ],
+  "sendButtonSelector": [
+    "button[data-testid='send-button']",
+    "button[aria-label*='Send']",
+    "button:has-text('Send')"
+  ],
+  "assistantMessageSelector": [
+    "[data-message-author-role='assistant']",
+    "article:has([data-message-author-role='assistant'])",
+    ".markdown"
+  ],
+  "blockResolvedSelectors": [
+    "#prompt-textarea",
+    "textarea[data-testid='prompt-textarea']",
+    "div[contenteditable='true'][id='prompt-textarea']"
+  ],
+  "streamingDone": {
+    "timeoutMs": 360000,
+    "stableMs": 8000,
+    "minWaitAfterStartMs": 15000,
+    "maxStopButtonWaitAfterValidMs": 30000,
+    "allowTextStableWithActionButtons": true,
+    "answerActionSelectors": [
+      "button[aria-label*='Copy' i]",
+      "button[data-testid*='copy' i]",
+      "button[aria-label*='Good response' i]",
+      "button[aria-label*='Bad response' i]",
+      "button[aria-label*='Like' i]",
+      "button[aria-label*='Dislike' i]",
+      "button[aria-label*='Regenerate' i]",
+      "button[aria-label*='Share' i]",
+      "[role='button'][aria-label*='Copy' i]",
+      "[data-testid*='conversation-turn'] button"
+    ],
+    "progressLogMs": 15000,
+    "pollMs": 1000,
+    "stopButtonSelectors": [
+      "button[data-testid='stop-button']",
+      "button[aria-label*='Stop']"
+    ]
+  },
+  "captchaOrRiskSelectors": [
+    "iframe[src*='captcha']",
+    "input[name='cf-turnstile-response']",
+    "[id^='cf-chl-widget']",
+    "script:has-text('_cf_chl_opt')",
+    "text=/cloudflare|turnstile/i",
+    "text=/captcha|verify you are human|unusual activity|请验证您是真人/i"
+  ],
+  "loginExpiredSelectors": [
+    "button:has-text('Log in')",
+    "button:has-text('Sign up')",
+    "button:has-text('登录')",
+    "button:has-text('免费注册')",
+    "text=/log in to continue|session expired|登录以获取|请登录|认证错误|auth\\/error/i"
+  ]
+}

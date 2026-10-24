@@ -1,0 +1,2 @@
+{"sample_id":"000001","registered_domain":"example.org","target_url":"https://example.org/","prompt":"Which registered domain is associated with the reserved Example Domain page used in documentation? Return the domain name."}
+{"sample_id":"000002","registered_domain":"example.net","target_url":"https://example.net/","prompt":"Please identify the registered domain reserved for network documentation examples whose name ends with .net. Return the domain name."}

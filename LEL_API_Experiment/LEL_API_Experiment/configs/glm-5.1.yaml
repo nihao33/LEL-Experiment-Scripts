@@ -1,0 +1,14 @@
+provider: "openai_compatible"
+base_url: "${LEL_OPENAI_BASE_URL}"
+api_key: "${LEL_OPENAI_API_KEY}"
+model_name: "glm-5.1"
+benchmark_path: "../examples/benchmark.example.jsonl"
+output_dir: "../outputs"
+concurrency: 1
+timeout_seconds: 900
+max_retries: 1
+retry_backoff_seconds: 3
+resume: true
+max_tokens: 32768
+temperature:
+request_options:
