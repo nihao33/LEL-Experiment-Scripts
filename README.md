@@ -29,13 +29,13 @@ Please preserve the original sample identifiers and record contents when reprodu
 
 ### API-Based Experiments
 
-`LEL_API_Experiment.zip` contains the scripts for submitting benchmark queries to API-based LLMs, collecting model responses, and processing experimental results.
+`LEL_API_Experiment` contains the scripts for submitting benchmark queries to API-based LLMs, collecting model responses, and processing experimental results.
 
 Users must provide their own valid API credentials and configure the required model and endpoint settings before running experiments.
 
 ### Web-Based Experiments
 
-`LEL_Web_Experiment.zip` contains the scripts for conducting browser-based experiments on Web-based AI products and collecting their responses.
+`LEL_Web_Experiment` contains the scripts for conducting browser-based experiments on Web-based AI products and collecting their responses.
 
 Depending on the platform and configuration, users may need to complete authentication manually and configure the required browser environment.
 
