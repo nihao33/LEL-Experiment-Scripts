@@ -10,8 +10,8 @@ The repository supports research on expired-domain exposure in LLM-generated res
 | -------------------------- | ------------------------------------------------------------ |
 | `API-Benchmark-3000.jsonl` | Benchmark dataset containing 3,000 natural-language test queries for API-based LLM experiments. |
 | `Web-Benchmark-1000.jsonl` | Benchmark dataset containing 1,000 natural-language test queries for Web-based AI product experiments. |
-| `LEL_API_Experiment.zip`   | Source code for conducting API-based experiments and processing their outputs. |
-| `LEL_Web_Experiment.zip`   | Source code for conducting Web-based experiments and collecting experimental outputs. |
+| `LEL_API_Experiment`   | Source code for conducting API-based experiments and processing their outputs. |
+| `LEL_Web_Experiment`   | Source code for conducting Web-based experiments and collecting experimental outputs. |
 
 The experiment scripts are provided separately for API-based LLMs and Web-based AI products because the two settings use different interaction methods and output formats.
 
